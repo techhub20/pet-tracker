@@ -2,6 +2,8 @@
 
 A Spring Boot Java application that tracks pets (cats and dogs) using different types of trackers . It calculates how many pets are outside/Inside the power saving zone , grouped by pet type and tracker type.
 
+This Application uses two types of data storage mechanisms Real DB like H2(can be used for real time db strorage) and InMemoryDB (used for testing purpose with ActiveProfile('test'))
+
 ----
 
 ### Reference Documentation
@@ -100,7 +102,7 @@ curl --location 'http://localhost:8080/api/v1/pet-tracker/inzone-status?inZone=t
   -mvn test -Dtest=PetServiceTest#testAddCatPet_InvalidTrackerTypeException
   -mvn test -Dtest=PetServiceTest#testAddDogPet
 
-### In Memory DB h2
+### DB- h2
 
 -mvn clean install
 -mvn spring-boot:run
