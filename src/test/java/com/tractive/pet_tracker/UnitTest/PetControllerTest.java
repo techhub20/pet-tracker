@@ -35,6 +35,16 @@ public class PetControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+
+    @Test
+    public void testGetPetData_EmptyListBeforeAdding() throws Exception {
+        Mockito.when(petService.getAllPetData()).thenReturn(Collections.emptyList());
+
+        mockMvc.perform(get("/pets"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[]"));
+    }
+
     @Test
     public void testAddPets_returnsCreated() throws Exception {
         PetRequestDto dto = new PetRequestDto(TrackerType.SMALL, PetType.DOG, 1, true, null);
@@ -45,24 +55,16 @@ public class PetControllerTest {
                 .andExpect(status().isCreated());
     }
 
-    @Test
-    public void testGetPetData_returnsEmptyList() throws Exception {
-        Mockito.when(petService.getAllPetData()).thenReturn(Collections.emptyList());
-
-        mockMvc.perform(get("/pets"))
-                .andExpect(status().isOk())
-                .andExpect(content().json("[]"));
-    }
-
+   
     @Test
     public void testGetPetsinZoneStatus() throws Exception {
         PetResponseSummaryDto summaryDto = new PetResponseSummaryDto(PetType.DOG, TrackerType.SMALL, 3);
 
-        Mockito.when(petService.getPetsZoneStautsSummary(false))
+        Mockito.when(petService.getPetsZoneStautsSummary(false)) //outside zone
                 .thenReturn(Collections.singletonList(summaryDto));
 
         mockMvc.perform(get("/inzone-status")
-                .param("inZone", "false")
+                .param("inZone","false")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].petType").value("DOG"))
