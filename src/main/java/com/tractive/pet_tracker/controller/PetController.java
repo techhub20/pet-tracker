@@ -79,8 +79,7 @@ public class PetController {
     @GetMapping("/outside-zone-status")
     @Operation(summary = "Get summary by zone status with inZone -'false'", description = "Returns grouped count of pets outside power saving zone") //for swagger API config
     public List<PetResponseSummaryDto> getPetsOutsideZoneSummary() {
-        return petService.getPetsZoneStautsSummary(false);
-        //.getPetsOutsideZoneSummary();
+        return petService.getPetsZoneStautsSummary(false);       
     }
 
      /**

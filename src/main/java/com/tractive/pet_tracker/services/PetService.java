@@ -105,13 +105,13 @@ public class PetService {
         // get all pets inZoneStatus
         List<Pet> pets = petDB.findByInZone(inZone);
 
-        // Step 2: Group by petType and trackerType
+        // Group by petType and trackerType
         Map<TrackerGroupKey, Long> groupedData = pets.stream()
                 .collect(Collectors.groupingBy(
                         p -> new TrackerGroupKey(p.getPetType(), p.getTrackerType()),
                         Collectors.counting()));
 
-        // Step 3: Convert to DTO list
+        // Convert to DTO list
         return groupedData.entrySet().stream()
                 .map(entry -> new PetResponseSummaryDto(
                         entry.getKey().getPetType(),
