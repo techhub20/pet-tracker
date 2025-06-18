@@ -71,7 +71,7 @@ public class PetController {
 
 
      /**
-     * Handles GET requests to retrieve inZone Status .
+     * Handles GET requests to retrieve inZone Status Summary .
      *
      * @return ResponseEntity with pet summary list
      */
