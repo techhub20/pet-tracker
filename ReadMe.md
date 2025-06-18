@@ -1,24 +1,27 @@
 # PET TRACKING APPLICATION
 
 A Spring Boot Java application that tracks pets (cats and dogs) using different types of trackers . It calculates how many pets are outside/Inside the power saving zone , grouped by pet type and tracker type.
+----
 
 # Getting Started
 
 ### ------Reference Documentation----
+----
 
 ### Tech Stack
 
 -Java 11
 -Spring Boot 2+
+----
 
-REST API to:
+### REST API to:
 
-Add pet data
-Get all stored pets
-Get summary of pets outside/inside zone, grouped by type and tracker
+-Add pet data
+-Get all stored pets
+-Get summary of pets outside/inside zone, grouped by type and tracker
 
 ### Build and Run
-
+````bash
 -mvn clean install
 -mvn spring-boot:run
 -localhost-
