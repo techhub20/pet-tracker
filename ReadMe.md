@@ -12,9 +12,10 @@ A Spring Boot Java application that tracks pets (cats and dogs) using different 
 -Spring Boot 2+
 
 REST API to:
--Add pet data
--Get all stored pets
--Get summary of pets outside/inside zone, grouped by type and tracker
+
+Add pet data
+Get all stored pets
+Get summary of pets outside/inside zone, grouped by type and tracker
 
 ### Build and Run
 
