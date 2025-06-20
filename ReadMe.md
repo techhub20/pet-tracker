@@ -15,24 +15,29 @@ This Application uses two types of data storage mechanisms Real DB like H2(can b
 -Spring Boot 2+
 
 ----
-
-### REST API to:
+### REST API :
 ````bash
 -Add pet data
 -Get all stored pets
--Get summary of pets outside/inside zone, grouped by type and tracker
+-Get summary of pets outside/inside zone, grouped by petType and tracker
+----
 
-### Build and Run
+### Build and Run Main Application
 ````bash
 -mvn clean install
 -mvn spring-boot:run
--localhost-
--http://localhost:8080/api/v1/pet-tracker/
+-URL : http://localhost:8080/api/v1/pet-tracker/
 
-##### ---------Curl cmds for local testing-------
+##### --------Testing-------#####
 
-### Add a Cat (Outside Zone)
+Before Testing make sure to run below cmd in the root folder
+###mvn spring-boot::run 
 
+---------Curl & Postman -------
+#######ADD PETS#######
+
+### Add a Cat (Outside Zone)#####
+-------CURL-----
 curl --location 'http://localhost:8080/api/v1/pet-tracker/addpet' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -43,7 +48,21 @@ curl --location 'http://localhost:8080/api/v1/pet-tracker/addpet' \
 "lostTracker": false
 }'
 
-### Add a Cat (Inside Zone)
+---------POSTMAN -------
+URL: http://localhost:8080/api/v1/pet-tracker/addpet
+Request: POST
+ 
+Body- Type-JSON
+{
+"petType": "CAT",
+"trackerType": "SMALL",
+"ownerId": 125,
+"inZone": false,
+"lostTracker": false
+}
+
+### Add a Cat (Inside Zone)#####
+---CURL---
 
 curl --location 'http://localhost:8080/api/v1/pet-tracker/addpet' \
 --header 'Content-Type: application/json' \
@@ -55,8 +74,20 @@ curl --location 'http://localhost:8080/api/v1/pet-tracker/addpet' \
 "lostTracker": false
 }'
 
-### Add a Dog (Outside Zone)
+---------POSTMAN -------
+URL: http://localhost:8080/api/v1/pet-tracker/addpet
+Request: POST
+Body -JSON 
+{
+"petType": "CAT",
+"trackerType": "SMALL",
+"ownerId": 126,
+"inZone": true,
+"lostTracker": false
+}
 
+### Add a Dog (Outside Zone)#######
+--CURL---
 curl --location 'http://localhost:8080/api/v1/pet-tracker/addpet' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -66,9 +97,20 @@ curl --location 'http://localhost:8080/api/v1/pet-tracker/addpet' \
 "inZone": false
 }
 '
+---------POSTMAN -------
+URL: http://localhost:8080/api/v1/pet-tracker/addpet
+Request: POST
+Body-JSON :
 
-### Add Another Dog (Inside Zone)
+{
+"petType": "DOG",
+"trackerType": "medium",
+"ownerId": 127,
+"inZone": false
+}
 
+### Add Another Dog (Inside Zone)#######
+--CURL---
 curl --location 'http://localhost:8080/api/v1/pet-tracker/addpet' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -78,20 +120,49 @@ curl --location 'http://localhost:8080/api/v1/pet-tracker/addpet' \
 "inZone": true
 }
 '
+---------POSTMAN -------
+URL: http://localhost:8080/api/v1/pet-tracker/addpet
+Request: POST
+Body- JSON Data:
+
+{
+"petType": "DOG",
+"trackerType": "medium",
+"ownerId": 128,
+"inZone": true
+}
+
+
+#######GET ######
 
 ### Get All Pets
+--CURL---
+  curl --location 'http://localhost:8080/api/v1/pet-tracker/pets'
 
-curl --location 'http://localhost:8080/api/v1/pet-tracker/pets'
+---------POSTMAN -------
+Request: GET
+URL: http://localhost:8080/api/v1/pet-tracker/pets
 
-### Get Summary of Pets Outside Zone
 
-curl --location 'http://localhost:8080/api/v1/pet-tracker/outside-zone-status'
 
-### Get Summary of Pets based on given param inZone(true/false)
+### Get Summary of Pets Outside Zone ######
+---------CURL-----------
+  curl --location 'http://localhost:8080/api/v1/pet-tracker/outside-zone-status'
 
-curl --location 'http://localhost:8080/api/v1/pet-tracker/inzone-status?inZone=true'
+---------POSTMAN -------
+Request: GET
+URL: http://localhost:8080/api/v1/pet-tracker/outside-zone-status
 
-### -----Run Tests-----
+
+### Get Summary of Pets based on given param inZone(true/false)#######
+---------CURL-----------
+  curl --location 'http://localhost:8080/api/v1/pet-tracker/inzone-status?inZone=true'
+
+---------POSTMAN -------
+Request: GET
+URL: http://localhost:8080/api/v1/pet-tracker/inzone-status?inZone=true
+
+####### Run Tests Locally#######
 
 - Run Complete tests
 
@@ -102,17 +173,21 @@ curl --location 'http://localhost:8080/api/v1/pet-tracker/inzone-status?inZone=t
   -mvn test -Dtest=PetServiceTest#testAddCatPet_InvalidTrackerTypeException
   -mvn test -Dtest=PetServiceTest#testAddDogPet
 
-### DB- h2
 
--mvn clean install
--mvn spring-boot:run
 
-- http://localhost:8080/api/v1/pet-tracker/h2-console
+### DB- h2 is used
+To check real time DB data please make sure to run below cmds in the root folder first
+### mvn clean install  
+### mvn spring-boot::run 
+
+URL: http://localhost:8080/api/v1/pet-tracker/h2-console
   -check application.properties for db name, user and pwd
 
-### Swagger for API DOC Reference
+---
 
--mvn clean install
--mvn spring-boot:run
+### SwaggerAPI DOC Reference
+To check Swagger Api Doc make sure to run below cmd in the root folder
+### mvn spring-boot::run 
+URL: http://localhost:8080/api/v1/pet-tracker/swagger-ui/index.html
 
-- http://localhost:8080/api/v1/pet-tracker/swagger-ui/index.html
+---
