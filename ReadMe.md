@@ -9,20 +9,20 @@ This Application uses two types of data storage mechanisms Real DB like H2(can b
 ### Reference Documentation
 ----
 ````bash
-### Tech Stack
+# Tech Stack
 
 -Java 11
 -Spring Boot 2+
 
 ----
-### REST API :
+# REST API :
 ````bash
 -Add pet data
 -Get all stored pets
 -Get summary of pets outside/inside zone, grouped by petType and tracker
 ----
 
-### Build and Run Main Application
+# Build and Run Main Application
 ````bash
 -mvn clean install
 -mvn spring-boot:run
@@ -175,7 +175,7 @@ URL: http://localhost:8080/api/v1/pet-tracker/inzone-status?inZone=true
 
 
 
-### DB- h2 is used
+# DB- h2 is used
 To check real time DB data please make sure to run below cmds in the root folder first
 ### mvn clean install  
 ### mvn spring-boot::run 
@@ -185,7 +185,7 @@ URL: http://localhost:8080/api/v1/pet-tracker/h2-console
 
 ---
 
-### SwaggerAPI DOC Reference
+# SwaggerAPI DOC Reference
 To check Swagger Api Doc make sure to run below cmd in the root folder
 ### mvn spring-boot::run 
 URL: http://localhost:8080/api/v1/pet-tracker/swagger-ui/index.html
