@@ -16,14 +16,14 @@ This Application uses two types of data storage mechanisms Real DB like H2(can b
 
 ----
 # REST API :
-````bash
+
 -Add pet data
 -Get all stored pets
 -Get summary of pets outside/inside zone, grouped by petType and tracker
 ----
 
 # Build and Run Main Application
-````bash
+
 -mvn clean install
 -mvn spring-boot:run
 -URL : http://localhost:8080/api/v1/pet-tracker/
